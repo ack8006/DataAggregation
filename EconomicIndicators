@@ -1,0 +1,39 @@
+Economic Indicators
+
+US
+
+Growth
+GDP									GDP
+Real GDP							GDPC1
+
+Inflation
+CPI for all Urban: all items		CPIAUCSL
+CPI less food energy				CPILFESL
+PCE									PCE
+PCE ex Food and Energy (chained)	PCEPILFE
+
+Labor http://research.stlouisfed.org/fred2/categories/32447
+Unemployment Rate					UNRATE
+Unemployment Rate HS Grad no Col	LNU04027660
+Unemployment Rate Part Time			LNS14200000
+" " College Graduates				LNU04027662
+" " Full Time 						LNS14100000
+Labor Force Participation Rate		CIVPART
+Total NonFarm Payrolls				PAYEMS
+U6 Unemployment						U6Rate
+U5 Unemployment						U5Rate
+U4 Unemployment 					U4Rate
+Average Hourly Earnings				CES0500000003
+Average Weekly Hours				AWHAETP
+
+
+Other
+Real Retail and Food Serve Sales	RRSFS
+ISM Man PMI							NAPM
+ISM Non-Man							NMFBAI
+Total Vehicle Sales					TOTALSA
+Michigan Consumer Sentiment			UMCSENT
+Industrial Production Index			INDPRO
+Housing Price Index					USSTHPI
+New Home Sales
+

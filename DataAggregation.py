@@ -4,24 +4,33 @@
 #this is a one time use to download and fully populate the database
 #there will be a separate cron job to consistently update the database
 
+#must be careful on how returned data is interpreted.  PAYEMS for example returns
+# in the total number of jobs in the US, not the change which is what is commonly
+# seen
+
+#http://api.stlouisfed.org/fred/series/observations?series_id=PAYEMS
+#&observation_start=2013-03-01&observation_end=2013-03-01
+#&realtime_start=2013-04-05&realtime_end=2013-04-05
+#&units=chg&api_key=xxxxxxxxxxxxxxxxx
+
 import json
 import urllib2
 #not currently using
-import fred
+#import fred
+from FREDRequests import *
+
 
 def main():
-	fredAPI()
+	#fred.key("dbbac155dc1543184204ed045632071e")
+	#print fred.api_key
+	test()
 
+def test(**kwargs):
+	#print fred.observations('PAYEMS')
+	fred = FredRequests()
+	kwargs['series'] = "PAYEMS"
+	fred.observations(**kwargs)
 
-
-def fredAPI():
-	fredAPIKey = "dbbac155dc1543184204ed045632071e"
-	jsonFileType = "&file_type=json"
-	fredURLPrefix = "http://api.stlouisfed.org/fred/"
-
-	for i in range(0,10):
-		url = fredURLPrefix + "category?category_id=" + str(i) + "&api_key=" + fredAPIKey + jsonFileType
-		jsonParser(url)
 
 def jsonParser(url):
 	#r = urllib2.urlopen(url)
