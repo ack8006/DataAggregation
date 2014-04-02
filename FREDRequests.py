@@ -3,7 +3,7 @@
 #&realtime_start=2013-04-05&realtime_end=2013-04-05
 #&units=chg&api_key=xxxxxxxxxxxxxxxxx
 
-#kwargs
+#**kwargs
 #identifier
 #series
 #observation_start
@@ -11,6 +11,7 @@
 #realtime_start
 #realtime_end
 #units
+#fileType
 
 
 
@@ -20,18 +21,25 @@ class FredRequests:
 		self.fredURLPrefix = "http://api.stlouisfed.org/fred/"
 		self.jsonFileType = "&file_type=json"
 
-	def fredRequest(self, **kwargs):
+	def fredRequestURL(self, **kwargs):
 		url = self.fredURLPrefix+kwargs['identifier']+kwargs['series']
-		if ('observation_start' in kwargs) and (observation_end in kwargs):
-			url = url + "&observation_start=" + kwargs['observation_start'] +"&observation_end=" + kwargs['observation_end']
+		if (kwargs['identifier'] == "series/observations?series_id="):
+			if ('observation_start' in kwargs) and (observation_end in kwargs):
+				url = url + "&observation_start=" + kwargs['observation_start'] +"&observation_end=" + kwargs['observation_end']
 		if ('realtime_start' in kwargs) and ('realtime_end' in kwargs):
-			url = url + "&realtime_start=" + kwargs['realtime_end'] + "&realtime_end=" + kwargs['realtime_end']
-		url = url + "&api_key" + self.FredKey + self.jsonFileType
+			url = url + "&realtime_start=" + kwargs['realtime_start'] + "&realtime_end=" + kwargs['realtime_end']
+		url = url + "&api_key" + self.FredKey
+		if (kwargs['fileType'] == 'JSON'):
+			url = url + self.jsonFileType
 
 		print url
-
+		return url
 
 	def observations(self, **kwargs):
 		kwargs['identifier'] = "series/observations?series_id="
-		self.fredRequest(**kwargs)
+		return self.fredRequestURL(**kwargs)
 
+	def releases(self, **kwargs):
+		#finds all releases, DOES NOT provide the data
+		kwargs['identifier'] = "series/release?series_id="
+		return self.fredRequestURL(**kwargs)

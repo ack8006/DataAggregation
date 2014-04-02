@@ -15,6 +15,7 @@
 
 import json
 import urllib2
+from xml.dom import minidom
 #not currently using
 #import fred
 from FREDRequests import *
@@ -23,21 +24,41 @@ from FREDRequests import *
 def main():
 	#fred.key("dbbac155dc1543184204ed045632071e")
 	#print fred.api_key
+	
 	test()
 
 def test(**kwargs):
 	#print fred.observations('PAYEMS')
 	fred = FredRequests()
 	kwargs['series'] = "PAYEMS"
-	fred.observations(**kwargs)
-
+	#kwargs['fileType'] = 'JSON'
+	url = fred.observations(**kwargs)
+	#jsonParser(url)
+	xmlObservationsParser(url)
 
 def jsonParser(url):
-	#r = urllib2.urlopen(url)
-	#data = json.loads(r)
-	#print data
-	print url
 
+	response = urllib2.urlopen(url)
+	data = json.load(response)
+	print data
+
+	observationArray = []
+
+#https://docs.python.org/2/library/xml.dom.minidom.html
+def xmlObservationsParser(url):
+	xmldoc = minidom.parse(urllib2.urlopen(url))
+	observationList = xmldoc.getElementsByTagName('observation')
+	print len(observationList)
+	observationDict = {}
+	for x in observationList:
+		print x.attributes['date'].value
+		print x.attributes['value'].value
+		print ''
+		observationDict[x.attributes['date']] = x.attributes['value'].value
+
+
+def addToDatabase()
+	pass
 
 
 
