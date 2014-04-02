@@ -1,0 +1,194 @@
+Economic Indicators
+http://research.stlouisfed.org/fred2/tags/series?ob=pv&t=&pageID=1
+
+
+US
+
+Growth
+GDP														GDP
+Real GDP												GDPC1
+Gross National Production 								GNP
+Gross Government Savings								A927RC1A027NBEA
+Government total expenditures 							W068RCQ027SBEA
+Gross domestic product per capita						A939RC0A052NBEA
+
+
+Economy
+Personal Consumption Expenditures: Durable Goods		PCDG
+Personal Consumption Expenditures: Nondurable Goods		PCND
+Disposable personal income								A067RC1A027NBEA
+Real disposable personal income							A067RX1A020NBEA
+Real disposable personal income: Per capita				A229RX0A048NBEA
+Corporate Profits After Tax								CP
+Gross Private Domestic Investment						GPDI
+Personal Saving Rate 									PSAVERT
+Gross private saving 									A126RC1A027NBEA
+Federal Debt: Total Public Debt as 
+	Percent of Gross Domestic Product 					GFDEGDQ188S
+Commercial and Industrial Loans, All Commercial Banks 	BUSLOANS
+Capacity Utilization: Total Industry					TCU
+Household Debt to GDP for United States					HDTGPDUSQ163N
+Monetary Base; Total 									BOGMBASE
+Total Population										POP
+Balance on Current Account								BOPBCA
+Exports of Goods and Services 							BOPXGS
+Imports of Goods and Services 							BOPMGS
+Balance on Goods and Services 							BOPBGS
+Federal Surplus or Deficit [-] 							FYFSD
+Federal Surplus or Deficit [-] as Percent of 
+	Gross Domestic Product								FYFSGDA188S
+
+
+Inflation
+CPI for all Urban: all items									CPIAUCSL
+CPI less food energy											CPILFESL
+PCE																PCE
+PCE NSA															PCECA
+PCE ex Food and Energy (chained)								PCEPILFE
+Personal Consumption Expenditures: Chain-type Price Index		PCECTPI
+Personal consumption expenditures ex food energy (chain)		DPCCRG3A086NBEA
+REAL PCE 														DPCERX1A020NBEA
+
+
+Money Stock Measures
+M1 Money Stock						M1
+M2 Money Stock 						M2
+Velocity of M1 Money Stock			M1V
+Currency Component of M1			CURRENCY
+Total Checkable Deposits			TCD
+Total Savings Deposits at all 
+	Depository Institutions			SAVINGS
+Retail Money Funds 					WRMFSL
+Institutional Money Funds 			WIMFSL
+
+
+
+Labor http://research.stlouisfed.org/fred2/categories/32447
+Unemployment Rate							UNRATE
+Unemployment Rate HS Grad no Col			LNU04027660
+Unemployment Rate Part Time					LNS14200000
+" " College Graduates						LNU04027662
+" " Full Time 								LNS14100000
+Labor Force Participation Rate				CIVPART
+Total NonFarm Payrolls						PAYEMS
+U6 Unemployment								U6Rate
+U5 Unemployment								U5Rate
+U4 Unemployment 							U4Rate
+Average Hourly Earnings of 
+	Production and Nonsupervisory 
+	Employees: Total Private				AHETPI
+Average Hourly Earnings						CES0500000003
+Average Weekly Hours						AWHAETP
+Average (Mean) Duration of Unemployment		UEMPMEAN
+
+
+Other
+Real Retail and Food Serve Sales	RRSFS
+ISM Man PMI							NAPM
+ISM Non-Man							NMFBAI
+Total Vehicle Sales					TOTALSA
+Light Weight Vehicle Sales: 
+	Autos & Light Trucks			ALTSALES
+Michigan Consumer Sentiment			UMCSENT
+Industrial Production Index			INDPRO
+Manufacturers' New Orders			NEWORDER
+Real Retail and Food Services Sales RRSFS
+
+
+Housing
+Housing Price Index									USSTHPI
+New Home Sales						
+Housing Starts: Total: SeasAdj Ann Rate				HOUST
+" " " " " Monthly Non Seas Adjusted					HOUSTNSA
+New Private Housing Units Authorized by 
+	Building Permits								PERMIT
+Existing Home Sales 								EXHOSLUSM495S
+Median Sales Price of Existing Homes				HOSMEDUSM052N
+Existing Home Sales: Housing Inventory 				HOSINVUSA495N
+Existing Home Sales: Months Supply 					HOSSUPUSM673N
+
+
+Interest Rates
+3-Month Treasury Constant Maturity Rate 		DGS3MO
+1-Year Treasury Constant Maturity Rate 			DGS1
+2-Year Treasury Constant Maturity Rate 			DGS2
+3-Year Treasury Constant Maturity Rate 			DGS3
+5-Year Treasury Constant Maturity Rate 			DGS5
+10-Year Treasury Constant Maturity				DGS10
+20-Year Treasury Constant Maturity Rate 		GS20
+30-Year Treasury Constant Maturity Rate 		DGS30
+Effective Federal Funds Rate 					FEDFUNDS
+Moody's Seasoned Aaa Corp Bond Yield			AAA
+Moody's Seasoned Baa Corporate Bond Yield		BAA
+Bank Prime Loan Rate 							MPRIME
+30-Year Conventional Mortgage Rate 				MORTG
+BofA Merrill Lynch US High Yield Master 
+	II Option-Adjusted Spread					BAMLH0A0HYM2
+TED Spread 										TEDRATE		
+1-Month London Interbank Offered Rate 
+	(LIBOR), based on U.S. Dollar				USD1MTD156N
+U.S. Treasury securities held by the 
+	Federal Reserve: All Maturities				TREAST
+
+
+FX
+U.S. / Euro Foreign Exchange Rate 				DEXUSEU
+Trade Weighted U.S. Dollar Index: 
+	Major Currencies							DTWEXM
+Japan / U.S. Foreign Exchange Rate 				DEXJPUS
+China / U.S. Foreign Exchange Rate 				DEXCHUS
+Trade Weighted U.S. Dollar Index: Broad			TWEXB
+Canada / U.S. Foreign Exchange Rate 			DEXCAUS
+U.S. / U.K. Foreign Exchange Rate 				DEXUSUK
+Mexico / U.S. Foreign Exchange Rate 			DEXMXUS
+Brazil / U.S. Foreign Exchange Rate 			DEXBZUS 
+U.S. / Australia Foreign Exchange Rate 			DEXUSAL
+India / U.S. Foreign Exchange Rate 				DEXINUS
+South Korea / U.S. Foreign Exchange Rate 		DEXKOUS
+Switzerland / U.S. Foreign Exchange Rate 		DEXSZUS 
+South Africa / U.S. Foreign Exchange Rate 		DEXSFUS
+Trade Weighted U.S. Dollar Index: 
+	Other Important Trading Partners			DTWEXO
+Singapore / U.S. Foreign Exchange Rate 			DEXSIUS
+U.S. / New Zealand Foreign Exchange Rate 		DEXUSNZ
+Taiwan / U.S. Foreign Exchange Rate 			DEXTAUS
+Thailand / U.S. Foreign Exchange Rate 			DEXTHUS 
+Hong Kong / U.S. Foreign Exchange Rate 			DEXHKUS 
+Malaysia / U.S. Foreign Exchange Rate 			DEXMAUS
+Sweden / U.S. Foreign Exchange Rate 			DEXSDUS 
+Norway / U.S. Foreign Exchange Rate 			DEXNOUS
+
+
+Commodity Spot Prices
+Crude Oil Prices: West Texas Intermediate 
+	(WTI) - Cushing, Oklahoma					DCOILWTICO
+Crude Oil Prices: Brent - Europe 				DCOILBRENTEU
+Propane Prices: Mont Belvieu, Texas 			DPROPANEMBTX
+Conventional Gasoline Prices: 
+	U.S. Gulf Coast, Regular					DGASUSGULF
+Kerosene-Type Jet Fuel Prices: 
+ 	U.S. Gulf Coast 							WJFUELUSGULF
+No. 2 Heating Oil Prices: New York Harbor		WHOILNYH
+Reformulated Gasoline Blendstock for 
+	Oxygenate Blending (RBOB) Prices: 
+	Regular Gasoline: Los Angeles				WRGASLA
+Gold Fixing Price 10:30 A.M. (London time) 
+	in London Bullion Market, based in 
+	U.S. Dollars								GOLDAMGBD228NLBM
+
+
+Volatility Indices	
+CBOE Volatility Index: VIX						VIXCLS
+CBOE S&P 500 3-Month Volatility Index			VXVCLS
+CBOE NASDAQ 100 Volatility Index				VXNCLS
+CBOE Gold ETF Volatility Index 					GVZCLS
+CBOE Crude Oil ETF Volatility Index 			OVXCLS
+CBOE Emerging Markets ETF Volatility Index 		VXEEMCLS
+CBOE Russell 2000 Volatility Index 				RVXCLS
+CBOE DJIA Volatility Index 						VXDCLS
+CBOE Silver ETF Volatility Index 				VXSLVCLS
+CBOE Energy Sector ETF Volatility Index 		VXXLECLS
+
+
+
+Intermodal Rail Traffic
