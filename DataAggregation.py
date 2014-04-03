@@ -60,6 +60,22 @@ def xmlObservationsParser(url):
 def addToDatabase()
 	pass
 
+#FREDIndicators
+#FREDID  VarChar(16)
+#IndicatorName  VarChar(45)
+#Reporting Period  VarChar(1)
+#Description  VarChar(45)
+#Scale  VarChar(45)
+
+#FredValues
+#ValueID  int
+#FREDID  VarChar(16)
+#RealTimeStart  Date 
+#RealTimeEnd  Date 
+#Date   DATE 
+#Value  Decimal(18,4)
+
+
 
 
 if __name__ == "__main__":
