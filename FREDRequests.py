@@ -28,11 +28,11 @@ class FredRequests:
 				url = url + "&observation_start=" + kwargs['observation_start'] +"&observation_end=" + kwargs['observation_end']
 		if ('realtime_start' in kwargs) and ('realtime_end' in kwargs):
 			url = url + "&realtime_start=" + kwargs['realtime_start'] + "&realtime_end=" + kwargs['realtime_end']
-		url = url + "&api_key" + self.FredKey
-		if (kwargs['fileType'] == 'JSON'):
+		url = url + "&api_key=" + self.FredKey
+		if ('fileType' in kwargs and kwargs['fileType'] == 'JSON'):
 			url = url + self.jsonFileType
 
-		print url
+		#print url
 		return url
 
 	def observations(self, **kwargs):
@@ -42,4 +42,8 @@ class FredRequests:
 	def releases(self, **kwargs):
 		#finds all releases, DOES NOT provide the data
 		kwargs['identifier'] = "series/release?series_id="
+		return self.fredRequestURL(**kwargs)
+
+	def series(self, **kwargs):
+		kwargs['identifier'] = "series?series_id="
 		return self.fredRequestURL(**kwargs)
