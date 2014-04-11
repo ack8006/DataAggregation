@@ -92,7 +92,6 @@ Light Weight Vehicle Sales:
 Michigan Consumer Sentiment			UMCSENT
 Industrial Production Index			INDPRO
 Manufacturers' New Orders			NEWORDER
-Real Retail and Food Services Sales RRSFS
 
 
 Housing
@@ -192,3 +191,132 @@ CBOE Energy Sector ETF Volatility Index 		VXXLECLS
 
 
 Intermodal Rail Traffic
+
+
+
+
+
+
+
+
+
+Categories
+
+1Production & Business Activity
+2Productivity & Costs
+3Industrial Production & Capacity Utilization
+4Employment Cost Index
+5Federal Government Debt
+6Retail Trade
+9Consumer Price Indexes (CPI and PCE)
+10Population, Employment, & Labor Markets
+11Current Employment Statistics (Establishment Sur
+12Current Population Survey (Household Survey)
+13U.S. Trade & International Transactions
+15Exchange Rates
+16Exports
+17Imports
+18National Income & Product Accounts
+21Price Indexes & Deflators
+22Interest Rates
+23Banking
+24Monetary Data
+25M1 and Components
+26Memorandum Items
+28M3 and Components
+29M2 and Components
+30MZM
+31Producer Price Indexes (PPI)
+46Financial Indicators
+51Bankers Acceptance Rate
+648th District Banking Performance
+65Arkansas
+66Illinois
+67Indiana
+68Kentucky
+69Mississippi
+70Missouri
+71Tennessee
+728th District
+73United States
+82Treasury Inflation-Indexed Securities
+83Condition of Banks
+84New England Census Division
+85Middle Atlantic Census Division
+86East North Central Census Division
+87West North Central Census Division
+88South Atlantic Census Division
+89East South Central Census Division
+90West South Central Census Division
+91Mountain Census Division
+92Pacific Census Division
+93United States
+94Daily Rates
+95Monthly Rates
+96M2 Minus Small Time Deposits
+97Housing
+99Securities & Investments
+100Commercial Banking
+101Consumer Credit
+104Population
+105Trade-Weighted Indexes
+106GDP/GNP
+107Gov't Receipts, Expenditures & Investment
+108Foreign Transactions
+109Private Enterprise Income
+110Personal Income & Outlays
+112Domestic Capital Account (Saving & Investment)
+114Mortgage Rates
+116Treasury Bills
+117Prime Bank Loan Rate
+118FRB Rates - discount, fed funds, primary credit
+119Moody's
+120Commercial Paper
+121Certificates of Deposit
+122Borrowings
+123Reserves
+124Monetary Base
+125Trade Balance
+127U.S. International Finance
+133St. Louis
+149Arkansas
+150Illinois
+151Indiana
+152Kentucky
+153Mississippi
+154Missouri
+158By Country
+191United Kingdom
+192Venezuela
+254Thailand
+257Switzerland
+258Sweden
+259Sri Lanka
+260Spain
+261South Korea
+262South Africa
+263Singapore
+264Portugal
+265Norway
+266New Zealand
+267Taiwan
+268Netherlands
+269Mexico
+270Malaysia
+271Ireland
+272India
+273Hong Kong
+274Greece
+275Japan
+276Italy
+277Germany
+278France
+279Finland
+280Euro
+281Denmark
+282China
+283Canada
+284Brazil
+285Belgium
+286Austria
+287Australia

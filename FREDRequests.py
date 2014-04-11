@@ -35,6 +35,10 @@ class FredRequests:
 		#print url
 		return url
 
+	def category(self, **kwargs):
+		kwargs['identifier'] = "category?category_id="
+		return self.fredRequestURL(**kwargs)
+		
 	def observations(self, **kwargs):
 		kwargs['identifier'] = "series/observations?series_id="
 		return self.fredRequestURL(**kwargs)

@@ -23,82 +23,82 @@ from FREDRequests import *
 
 
 
-def main():
+def main(**kwargs):
 	#fred.key("dbbac155dc1543184204ed045632071e")
 	#print fred.api_key
 	
-	test()
+	#seriesUpload()
 
 
-def test(**kwargs):
+def seriesUpload(**kwargs):
 	#print fred.observations('PAYEMS')
 	fred = FredRequests()
-	kwargs['series'] = "PAYEMS"
-	#kwargs['fileType'] = 'JSON'
-
-	#TEST SERIES DESCRIPTION
-	url = fred.series(**kwargs)
-	xmlSeriesParser(url)
-
-
-	#TEST OBSERVATIONS
-	url = fred.observations(**kwargs)
-	#jsonParser(url)
 	
-	#***xmlObservationsParser(url, kwargs['series'])
+	#tagList = ['VIXCLS','VXVCLS','VXNCLS','GVZCLS','OVXCLS','VXEEMCLS','RVXCLS','VXDCLS','VXSLVCLS','VXXLECLS']
 
-def jsonParser(url):
+	for x in tagList:
+		kwargs['series'] = x		
+		#kwargs['fileType'] = 'JSON'
+		#TEST SERIES DESCRIPTION
+		url = fred.series(**kwargs)
+		xmlSeriesParseAndLoad(url)
 
-	response = urllib2.urlopen(url)
-	data = json.load(response)
-	print data
+def xmlCategoryParser(url, a):
+	try:
+		xmldoc = minidom.parse(urllib2.urlopen(url))
+		categoryList = xmldoc.getElementsByTagName('category')
+		for x in categoryList:
+			print 
+			print str(a) + x.attributes['name'].value
+	except urllib2.HTTPError, err:
+		if err.code == 400:
+			pass
+		else:
+			raise
 
-	observationArray = []
-
-#https://docs.python.org/2/library/xml.dom.minidom.html
 def xmlObservationsParser(url, series):
 	xmldoc = minidom.parse(urllib2.urlopen(url))
 	observationList = xmldoc.getElementsByTagName('observation')
 	print len(observationList)
 	observationDict = {}
-	for x in observationList:
+	
 		#print x.attributes['date'].value
 		#print x.attributes['value'].value
 		#print ''
-		observationDict[x.attributes['date'].value] = x.attributes['value'].value
+	observationDict[x.attributes['date'].value] = x.attributes['value'].value
 
-def xmlSeriesParser(url):
+def xmlSeriesParseAndLoad(url):
 	xmldoc = minidom.parse(urllib2.urlopen(url))
 	seriesList = xmldoc.getElementsByTagName('series')
-	seriesDict = {}
-	for x in seriesList:
-		seriesDict['id'] = x.attributes['id'].value
-		seriesDict['title'] = x.attributes['title'].value
+
+	db = MySQLdb.connect(host="localhost", user="root", passwd="Optima1!", db="EconomicIndicators")
+
+		#seriesDict['id'] = x.attributes['id'].value
+		#seriesDict['title'] = x.attributes['title'].value
 		#seriesDict['frequency'] = x.attributes['frequency'].value
-		seriesDict['frequency_short'] = x.attributes['frequency_short'].value
-		seriesDict['units'] = x.attributes['units'].value
+		#seriesDict['frequency_short'] = x.attributes['frequency_short'].value
+		#seriesDict['units'] = x.attributes['units'].value
 		#seriesDict['seasonal_adjustment'] = x.attributes['seasonal_adjustment'].value
 		#seriesDict['seasonal_adjustment_short'] = x.attributes['seasonal_adjustment_short'].value
 		#seriesDict['last_updated'] = x.attributes['last_updated'].value
 		#seriesDict['observation_start'] = x.attributes['observation_start'].value
-	addSeriesToDatabase(seriesDict)
-
-def addSeriesToDatabase(seriesDict):
-	db = MySQLdb.connect(host="localhost", user="root", passwd="Optima1!", db="EconomicIndicators")
 	
 	cursor = db.cursor() 
-	cursor.execute("SELECT 1 FROM fredindicators WHERE FREDID = \"%s\"" %(seriesDict['id']))
-	if len(cursor.fetchall()) >= 1:
-		print "yes"
-	if len(cursor.fetchall()) <= 0:
-		print "no"
+	for x in seriesList:
+		cursor.execute("SELECT 1 FROM fredindicators WHERE FREDID = \"%s\"" %(x.attributes['id'].value))
+		if len(cursor.fetchall()) <= 0:
+			print x.attributes['id'].value
+			cursor.execute("INSERT INTO fredindicators (FREDID, Title, Frequency, SeasonalAdjustment, Units, Region, Category) VALUES ('%s', '%s', '%s', '%s','%s','%s','%s')" % (x.attributes['id'].value.replace("'","''"), x.attributes['title'].value.replace("'","''"), x.attributes['frequency_short'].value, x.attributes['seasonal_adjustment_short'].value, x.attributes['units'].value.replace("'","''"), "Global", "Volatility"))
+			db.commit()
+			print "uploaded: " + x.attributes['id'].value
+
+	db.close()
 
 
 
-	#cursor.execute("SELECT * FROM fredindicators")
-	#for row in cursor.fetchall():
-	#	print row[0]
-		
+
+
+
 
 
 
