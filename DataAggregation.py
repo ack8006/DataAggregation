@@ -73,24 +73,16 @@ def xmlSeriesParseAndLoad(url):
 
 	db = MySQLdb.connect(host="localhost", user="root", passwd="Optima1!", db="EconomicIndicators")
 
-		#seriesDict['id'] = x.attributes['id'].value
-		#seriesDict['title'] = x.attributes['title'].value
-		#seriesDict['frequency'] = x.attributes['frequency'].value
-		#seriesDict['frequency_short'] = x.attributes['frequency_short'].value
-		#seriesDict['units'] = x.attributes['units'].value
-		#seriesDict['seasonal_adjustment'] = x.attributes['seasonal_adjustment'].value
-		#seriesDict['seasonal_adjustment_short'] = x.attributes['seasonal_adjustment_short'].value
-		#seriesDict['last_updated'] = x.attributes['last_updated'].value
-		#seriesDict['observation_start'] = x.attributes['observation_start'].value
-	
 	cursor = db.cursor() 
 	for x in seriesList:
 		cursor.execute("SELECT 1 FROM fredindicators WHERE FREDID = \"%s\"" %(x.attributes['id'].value))
 		if len(cursor.fetchall()) <= 0:
 			print x.attributes['id'].value
-			cursor.execute("INSERT INTO fredindicators (FREDID, Title, Frequency, SeasonalAdjustment, Units, Region, Category) VALUES ('%s', '%s', '%s', '%s','%s','%s','%s')" % (x.attributes['id'].value.replace("'","''"), x.attributes['title'].value.replace("'","''"), x.attributes['frequency_short'].value, x.attributes['seasonal_adjustment_short'].value, x.attributes['units'].value.replace("'","''"), "Global", "Volatility"))
-			db.commit()
-			print "uploaded: " + x.attributes['id'].value
+
+			#****************************Need to pull category name(could do through an optional parameter) also the last updated and last obs which are easy
+			#cursor.execute("INSERT INTO fredindicators (FREDID, Title, Frequency, SeasonalAdjustment, Units, Category, Popularity, ObservationEnd, LastUpdated) VALUES ('%s', '%s', '%s', '%s','%s','%s','%s','%s','%s')" % (x.attributes['id'].value.replace("'","''"), x.attributes['title'].value.replace("'","''"), x.attributes['frequency_short'].value, x.attributes['seasonal_adjustment_short'].value, x.attributes['units'].value.replace("'","''"), ))
+			#db.commit()
+			#print "uploaded: " + x.attributes['id'].value
 
 	db.close()
 

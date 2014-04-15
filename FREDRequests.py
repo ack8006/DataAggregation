@@ -38,6 +38,10 @@ class FredRequests:
 	def category(self, **kwargs):
 		kwargs['identifier'] = "category?category_id="
 		return self.fredRequestURL(**kwargs)
+
+	def categorySeries(self, **kwargs):
+		kwargs['identifier'] = "category/series?category_id="
+		return self.fredRequestURL(**kwargs)
 		
 	def observations(self, **kwargs):
 		kwargs['identifier'] = "series/observations?series_id="
