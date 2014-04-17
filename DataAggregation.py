@@ -48,8 +48,9 @@ def xmlCategoryParser(url, a):
 		xmldoc = minidom.parse(urllib2.urlopen(url))
 		categoryList = xmldoc.getElementsByTagName('category')
 		for x in categoryList:
-			print 
-			print str(a) + x.attributes['name'].value
+			#***************************get cat name then call category series and load them
+			catName = x.attributes['name'].value 
+			xmlSeriesParseAndLoad(fred.categorySeries(**kwargs), catName)
 	except urllib2.HTTPError, err:
 		if err.code == 400:
 			pass
@@ -67,7 +68,7 @@ def xmlObservationsParser(url, series):
 		#print ''
 	observationDict[x.attributes['date'].value] = x.attributes['value'].value
 
-def xmlSeriesParseAndLoad(url):
+def xmlSeriesParseAndLoad(url, catName = ""):
 	xmldoc = minidom.parse(urllib2.urlopen(url))
 	seriesList = xmldoc.getElementsByTagName('series')
 
@@ -97,10 +98,14 @@ def xmlSeriesParseAndLoad(url):
 
 #FREDIndicators
 #FREDID  VarChar(16)
-#IndicatorName  VarChar(45)
-#Reporting Period  VarChar(1)
-#Description  VarChar(45)
-#Scale  VarChar(45)
+#IndicatorName  VarChar(120)
+#Reporting Period  VarChar(4)
+#SeasonalAdjustment VARCHAR(8)
+#Units VARCHAR(45)
+#Category VARCHAR(16)
+#Popularity INT
+#ObservationEnd DATE
+#LastUpdated DATETIME
 
 #FredValues
 #ValueID  int
