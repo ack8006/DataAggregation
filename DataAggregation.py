@@ -27,48 +27,53 @@ def main(**kwargs):
 	#fred.key("dbbac155dc1543184204ed045632071e")
 	#print fred.api_key
 	
-	#seriesUpload()
+	#initialSeriesUpload()
+	initialCategorySeriesUpload()
 
-
-def seriesUpload(**kwargs):
+def initialSeriesUpload(**kwargs):
 	#print fred.observations('PAYEMS')
 	fred = FredRequests()
 	
 	#tagList = ['VIXCLS','VXVCLS','VXNCLS','GVZCLS','OVXCLS','VXEEMCLS','RVXCLS','VXDCLS','VXSLVCLS','VXXLECLS']
 
 	for x in tagList:
-		kwargs['series'] = x		
+		kwargs['id'] = x		
 		#kwargs['fileType'] = 'JSON'
 		#TEST SERIES DESCRIPTION
 		url = fred.series(**kwargs)
 		xmlSeriesParseAndLoad(url)
 
-def xmlCategoryParser(url, a):
+def initialCategorySeriesUpload(**kwargs):
+	fred = FredRequests()
+	categoryList = [1]
+	#gets name of category then adds all series within that category
+	for x in categoryList:
+		#sets category id
+		kwargs['id'] = str(x)
+		#gets the url with fred.category then calls categoryparser which returns the cat name
+		categoryName = xmlCategoryParser(fred.category(**kwargs))
+		if categoryName:
+			xmlSeriesParseAndLoad(fred.categorySeries(**kwargs), categoryName)
+
+#parses category information and returns the category name
+def xmlCategoryParser(url):
 	try:
 		xmldoc = minidom.parse(urllib2.urlopen(url))
 		categoryList = xmldoc.getElementsByTagName('category')
+		#there will only be one category
 		for x in categoryList:
 			#***************************get cat name then call category series and load them
-			catName = x.attributes['name'].value 
-			xmlSeriesParseAndLoad(fred.categorySeries(**kwargs), catName)
+			return = x.attributes['name'].value 
 	except urllib2.HTTPError, err:
 		if err.code == 400:
-			pass
+			#**** deal with this better
+			print "error 400"
+			return None	
 		else:
 			raise
 
-def xmlObservationsParser(url, series):
-	xmldoc = minidom.parse(urllib2.urlopen(url))
-	observationList = xmldoc.getElementsByTagName('observation')
-	print len(observationList)
-	observationDict = {}
-	
-		#print x.attributes['date'].value
-		#print x.attributes['value'].value
-		#print ''
-	observationDict[x.attributes['date'].value] = x.attributes['value'].value
-
-def xmlSeriesParseAndLoad(url, catName = ""):
+#parses series for economic series information, this parses and puts into a database
+def xmlSeriesParseAndLoad(url, categoryName = ""):
 	xmldoc = minidom.parse(urllib2.urlopen(url))
 	seriesList = xmldoc.getElementsByTagName('series')
 
@@ -80,14 +85,31 @@ def xmlSeriesParseAndLoad(url, catName = ""):
 		if len(cursor.fetchall()) <= 0:
 			print x.attributes['id'].value
 
-			#****************************Need to pull category name(could do through an optional parameter) also the last updated and last obs which are easy
-			#cursor.execute("INSERT INTO fredindicators (FREDID, Title, Frequency, SeasonalAdjustment, Units, Category, Popularity, ObservationEnd, LastUpdated) VALUES ('%s', '%s', '%s', '%s','%s','%s','%s','%s','%s')" % (x.attributes['id'].value.replace("'","''"), x.attributes['title'].value.replace("'","''"), x.attributes['frequency_short'].value, x.attributes['seasonal_adjustment_short'].value, x.attributes['units'].value.replace("'","''"), ))
+			#****************************may have to figure out how to do date and datetime
+			#cursor.execute("INSERT INTO fredindicators (FREDID, IndicatorName, ReportingPeriod, \
+			#	SeasonalAdjustment, Units, Category, Popularity, ObservationEnd, LastUpdated) \
+			#	VALUES ('%s', '%s', '%s', '%s','%s','%s','%s','%s','%s')" 
+			#	% (x.attributes['id'].value.replace("'","''"), x.attributes['title'].value.replace("'","''"), 
+			#	x.attributes['frequency_short'].value, x.attributes['seasonal_adjustment_short'].value, 
+			#	x.attributes['units'].value.replace("'","''"), categoryName, x.attributes['popularity'].value,
+			#	x.attributes['observation_end'].value, x.attributes['last_updated'].value))
+
 			#db.commit()
 			#print "uploaded: " + x.attributes['id'].value
 
 	db.close()
 
-
+#parses a series information for the date and value of that information
+def xmlObservationsParser(url, series):
+	xmldoc = minidom.parse(urllib2.urlopen(url))
+	observationList = xmldoc.getElementsByTagName('observation')
+	print len(observationList)
+	observationDict = {}
+	
+		#print x.attributes['date'].value
+		#print x.attributes['value'].value
+		#print ''
+	observationDict[x.attributes['date'].value] = x.attributes['value'].value
 
 
 
