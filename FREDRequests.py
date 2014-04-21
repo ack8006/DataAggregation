@@ -5,7 +5,7 @@
 
 #**kwargs
 #identifier
-#series
+#id
 #observation_start
 #observation_end
 #realtime_start
@@ -22,7 +22,7 @@ class FredRequests:
 		self.jsonFileType = "&file_type=json"
 
 	def fredRequestURL(self, **kwargs):
-		url = self.fredURLPrefix+kwargs['identifier']+kwargs['series']
+		url = self.fredURLPrefix+kwargs['identifier']+kwargs['id']
 		if (kwargs['identifier'] == "series/observations?series_id="):
 			if ('observation_start' in kwargs) and (observation_end in kwargs):
 				url = url + "&observation_start=" + kwargs['observation_start'] +"&observation_end=" + kwargs['observation_end']
